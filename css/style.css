@@ -121,7 +121,7 @@ span.higry-date {
   justify-content: center;
 }
 .rondom-zekr-container {
-  width: 350px;
+  width: 400px;
 }
 .azkar-sabah-statistic span.count {
 border-color: #08c091 !important;
@@ -135,7 +135,7 @@ border-color: #08c091 !important;
   flex-wrap: wrap;
 }
 .azkar-links img {
-  width: 150px;
+  width: 120px;
   height: 100px;
 }
 .home-azkar-links {
