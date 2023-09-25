@@ -32,12 +32,14 @@ async function createContent() {
   // get rondom zekr
 
   if (Math.floor(Math.random()*2)===0) {
-    rondom_zekr.innerHTML= azkar_sabah_data[Math.floor(Math.random()*(azkar_sabah_data.length))].mainText
-    zekr_info.innerHTML = azkar_sabah_data[Math.floor(Math.random()*(azkar_sabah_data.length))].infoText
+    let rondom_number = Math.floor(Math.random()*(azkar_sabah_data.length));
+    rondom_zekr.innerHTML= azkar_sabah_data[rondom_number].mainText
+    zekr_info.innerHTML = azkar_sabah_data[rondom_number].infoText
   }
   else {
-    rondom_zekr.innerHTML= azkar_masaa_data[Math.floor(Math.random()*(azkar_masaa_data.length))].mainText
-    zekr_info.innerHTML = azkar_masaa_data[Math.floor(Math.random()*(azkar_masaa_data.length))].infoText
+    let rondom_number = Math.floor(Math.random()*(azkar_masaa_data.length));
+    rondom_zekr.innerHTML= azkar_masaa_data[rondom_number].mainText
+    zekr_info.innerHTML = azkar_masaa_data[rondom_number].infoText
   }
   // all_azkar.forEach((azkar,index)=>{
     function create_zekr_page(azkar_name,azkar_title_name,azkar_data) {
