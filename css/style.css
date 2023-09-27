@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css)
 * {
   direction: rtl;
   margin: 0;
@@ -5,6 +6,7 @@
   font-size: 20px;
   font-family: "Cairo", sans-serif;
   font-family: 'Noto Kufi Arabic', sans-serif;
+  font-family: “Droid Arabic Kufi” , serif;
   font-weight: 500;
 }
 :root {
