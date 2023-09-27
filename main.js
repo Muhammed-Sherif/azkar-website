@@ -305,10 +305,10 @@ function light_or_night_mode() {
       azkarTasabehLink,
     ];
     if (switchButton.classList[1] === "light-mode-icon") {
+      switchButton.innerHTML = `<i class="fa-solid fa-moon"></i>`;
       contentBoxes.forEach((contentBox) => {
         addNightModeAttribute(contentBox);
       });
-      switchButton.innerHTML = `<i class="fa-solid fa-moon"></i>`;
       titles.forEach((title) => {
         addNightModeAttribute(title);
       });
