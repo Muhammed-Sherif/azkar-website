@@ -395,7 +395,12 @@ footer span {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #175770;
 }
-@media screen and (width<850px) {
+@media screen and (width<895px) {
+  .achieved-azkar span:first-child {
+    display : block ; 
+    width : 100% ;
+    margin-bottom : 15px;
+  }
   footer span {
     flex: 0.6;
   }
