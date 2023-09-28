@@ -54,6 +54,8 @@ async function createContent() {
   let option = {
     month: "long",
     day: "numeric",
+    year: "numeric",
+    numerals: "arabic",
   };
   higry_date.innerHTML = `${new Intl.DateTimeFormat(
     "ar-FR-u-ca-islamic",
