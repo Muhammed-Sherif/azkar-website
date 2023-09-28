@@ -166,7 +166,7 @@ span.higry-date {
   margin: 10px 0 20px 20px;
   /* filter: grayscale(.6); */
   transition: transform 0.3s;
-  box-shadow: 0 0 15px 0 #00000040;
+  box-shadow: 0 0 10px 0 #00000040;
   color: white;
 }
 .azkar-sabah-link.light-mode,
@@ -290,35 +290,21 @@ a {
   }
 }
 /* ////////////////////////////////////////////////////////// */
-* {
-  direction: rtl;
-  margin: 0;
-  padding: 0;
-  font-family: "Cairo", sans-serif;
-  font-weight: 500;
-}
 .landing-area span,
 .landing-area div {
   font-size: 30px;
-}
-:root {
-  --main-color: #15acdf;
-  --minor-color: #87ceeb;
 }
 .countercontainer {
   display: flex;
   align-items: center;
   color: #000000b5;
 }
-i.fa-solid.fa-rotate-right {
-  color: #72c2e2;
-  font-size: 37px;
-}
 .content-box .counter span {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-weight:700;
 }
 .content-box .counter span::selection {
   background-color: transparent;
@@ -533,7 +519,7 @@ i.fa-regular.fa-sun {
   background-color: white;
   border: none;
   border-radius: 45px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.35);
   overflow: hidden;
   background-color: #192030;
   color: white;
