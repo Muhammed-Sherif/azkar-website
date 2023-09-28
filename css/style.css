@@ -4,9 +4,7 @@
   padding: 0;
   font-size: 20px;
   font-family: "El Messiri", sans-serif;
-  font-weight: 500;
   line-height: 1.7;
-  /* box-sizing: border-box; */
 }
 :root {
   --main-color: #15acdf;
@@ -166,7 +164,7 @@ span.higry-date {
   margin: 10px 0 20px 20px;
   /* filter: grayscale(.6); */
   transition: transform 0.3s;
-  box-shadow: 0 0 5px 0 #00000040;
+  box-shadow: 0 0 10px 1px #00000025;
   color: white;
 }
 .azkar-sabah-link.light-mode,
@@ -477,7 +475,7 @@ i.fa-regular.fa-sun {
   position: relative;
   font-size: 30px;
   cursor: pointer;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px 1px #00000025;
   animation-timing-function: linear;
   animation-duration: 0.5s;
   animation-iteration-count: 1;
