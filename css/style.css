@@ -299,11 +299,13 @@ a {
 }
 .content-box .counter span {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%)
   font-weight: 900;
-  font-size: 40px
+  font-size: 80px;
+  color : white 
+  
 }
 .content-box .counter span::selection {
   background-color: transparent;
