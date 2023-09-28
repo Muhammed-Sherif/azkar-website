@@ -52,6 +52,7 @@ async function createContent() {
     date
   )}`;
   let option = {
+    weekday: "long",
     month: "long",
     day: "numeric",
   };
