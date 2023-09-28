@@ -477,7 +477,7 @@ i.fa-regular.fa-sun {
   position: relative;
   font-size: 30px;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   animation-timing-function: linear;
   animation-duration: 0.5s;
   animation-iteration-count: 1;
