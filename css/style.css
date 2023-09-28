@@ -302,7 +302,8 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-weight:700;
+  font-weight: 900;
+  font-size: 40px
 }
 .content-box .counter span::selection {
   background-color: transparent;
