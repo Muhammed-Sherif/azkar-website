@@ -127,12 +127,21 @@ async function createContent() {
       counters.forEach((counter) => {
         counter.addEventListener("click", () => {
           counter.style.animation =
-            "color-animation-counter 1s linear  1 alternate both;";
+          "color-animation-counter 1s linear  1 alternate both;";
         });
       });
       let content_text = document.createElement("div");
       content_text.setAttribute("class", "content-text");
       content.append(content_text);
+      let contentTexts = document.querySelectorAll(".content-text") 
+      counters.forEach((counter,index) => {
+        contentTexts.forEach((content,i)=> {
+          if (i===index) {
+            // console.log(content.clientHeight)
+            counter.style.height = `${content.clientHeight}px`
+          }
+        })
+      });
       // get text
       //first text
 
@@ -334,4 +343,3 @@ function light_or_night_mode() {
 switchButton.addEventListener("click", () => {
   light_or_night_mode();
 });
-
