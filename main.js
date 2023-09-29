@@ -1,4 +1,4 @@
-uslet azkar_sabah_data = [];
+let azkar_sabah_data = [];
 let azkar_masaa_data = [];
 let tasabeh_data = [];
 let azkar_sleeping_data = [];
