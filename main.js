@@ -133,14 +133,6 @@ async function createContent() {
       let content_text = document.createElement("div");
       content_text.setAttribute("class", "content-text");
       content.append(content_text);
-      let contentTexts = document.querySelectorAll(".content-text") 
-      counters.forEach((counter,index) => {
-        contentTexts.forEach((content,i)=> {
-          if (i===index && content.clientHeight == 0) {
-            counter.style.minHeight = `${content.clientHeight}px`
-          }
-        })
-      });
       // get text
       //first text
 
@@ -175,6 +167,14 @@ async function createContent() {
         infoTextcontainer.appendChild(infoText);
         content_text.appendChild(infoTextcontainer);
       }
+      let contentTexts = document.querySelectorAll(".content-text") 
+      counters.forEach((counter,index) => {
+        contentTexts.forEach((content,i)=> {
+          if (i===index && content.clientHeight == 0) {
+            counter.style.minHeight = `${content.clientHeight}px`
+          }
+        })
+      });
     }
   }
   let all_azkar = [
