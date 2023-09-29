@@ -1,4 +1,4 @@
-let azkar_sabah_data = [];
+uslet azkar_sabah_data = [];
 let azkar_masaa_data = [];
 let tasabeh_data = [];
 let azkar_sleeping_data = [];
@@ -137,8 +137,7 @@ async function createContent() {
       counters.forEach((counter,index) => {
         contentTexts.forEach((content,i)=> {
           if (i===index) {
-            // console.log(content.clientHeight)
-            counter.style.height = `${content.clientHeight}px`
+            counter.style.minHeight = `${content.clientHeight}px`
           }
         })
       });
