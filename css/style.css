@@ -593,9 +593,9 @@ span.title {
   .rondom-zekr {
     padding: 10px;
   }
-  ul {
-    margin: 0 18px;
-  }
+    .home-azkar-links {
+    width: 100%;
+    }
 }
 @media screen and (width<=230px) {
   .sum-of-azkar {
