@@ -170,7 +170,7 @@ async function createContent() {
       let contentTexts = document.querySelectorAll(".content-text") 
       counters.forEach((counter,index) => {
         contentTexts.forEach((content,i)=> {
-          if (i===index && content.clientHeight == 0) {
+          if (i===index && content.clientHeight > 0) {
             counter.style.minHeight = `${content.clientHeight}px`
           }
         })
