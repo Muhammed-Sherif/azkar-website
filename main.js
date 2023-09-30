@@ -267,6 +267,8 @@ function addNightModeAttribute(element) {
   element.classList.add("light-mode");
 }
 let switchButton = document.querySelector(".switch-button");
+switchButton.innerHTML = `<i class="fa-solid fa-moon"></i>`;
+switchButton.innerHTML = `<i class="fa-regular fa-sun"></i>`;
 function light_or_night_mode() {
   try {
     const body = document.querySelector("body");
