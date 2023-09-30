@@ -171,7 +171,7 @@ async function createContent() {
       counters.forEach((counter,index) => {
         contentTexts.forEach((content,i)=> {
           if (i===index && document.documentElement.clientHeight > 670) {
-            counter.style.minHeight = `${content.clientHeight}px`
+            counter.style.minHeight = `${content.clientHeight-50}px`
           }
         })
       });
