@@ -560,6 +560,10 @@ span.title {
     width: 250px;
     height: 115px;
   }
+  .content-text {
+    display : block ;
+    width : 100%;
+  }
 }
 @media screen and (width<=390px) {
   .public-date {
