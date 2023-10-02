@@ -301,12 +301,13 @@ a {
 }
 .content-box .counter span {
   position: absolute;
-  top: 55%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: 700;
   font-size: 60px;
   color: white;
+  font-family : initial ;
 }
 .content-box .counter span::selection {
   background-color: transparent;
