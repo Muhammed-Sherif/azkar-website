@@ -113,14 +113,27 @@ async function createContent() {
       content.setAttribute("class", "content");
       content_box.append(content);
       let countercontainer = document.createElement("div");
-      let counter = document.createElement("div");
-      let counterSpan = document.createElement("span");
-      counterSpan.setAttribute("class", "counterSpan");
       countercontainer.setAttribute("class", "countercontainer");
+      let counter = document.createElement("div");
       counter.setAttribute("class", `counter`);
-      // check if there is data in localStorge
-      counterSpan.innerHTML = `${azkar_data[i].count}`;
-      counter.appendChild(counterSpan);
+      // adding count-clock
+      let count_clock = document.createElement("span");
+      count_clock.setAttribute("class", "count-clock");
+      count_clock.innerHTML = `${azkar_data[i].count}`;
+      counter.appendChild(count_clock);
+      //
+      let count_down = document.createElement("span");
+      count_down.setAttribute("class", "count-down");
+      count_down.innerHTML = `${azkar_data[i].count}`;
+      counter.appendChild(count_down);
+      //
+      let zekr_reset = document.createElement("span");
+      zekr_reset.setAttribute("class", "zekr-reset");
+      zekr_reset.innerHTML = `<i class="material-symbols-outlined">
+      cached
+      </i>`;
+      counter.appendChild(zekr_reset);
+      //
       countercontainer.appendChild(counter);
       content.appendChild(countercontainer);
       let counters = document.querySelectorAll(".counter");
