@@ -211,32 +211,32 @@ async function createContent() {
 }
 async function plus_minus() {
   await createContent();
-  let Count = document.querySelectorAll(".counter");
-  let counterSpans = document.querySelectorAll(".counterSpan");
-  Count.forEach((count, index) => {
-    count.addEventListener("click", () => {
-      counterSpans.forEach((counterSpan, i) => {
+   let count_downs = document.querySelectorAll(".count-down");
+  let counters = document.querySelectorAll(".counter");
+  counters.forEach((counter, index) => {
+    count_downs.forEach((count_down, i) => {
+        count_down.addEventListener("click", () => {
         if (i === index) {
-          if (counterSpan.innerHTML > 0) {
-            counterSpan.innerHTML -= 1;
-            if (counterSpan.innerHTML == 0) {
-              count.style.backgroundColor = "var(--minor-color)";
-              count.style.animationName = "color-animation-counter";
+          if (count_down.innerHTML > 0) {
+            count_down.innerHTML -= 1;
+            if (count_down.innerHTML == 0) {
+              counter.style.backgroundColor = "var(--minor-color)";
+              counter.style.animationName = "color-animation-counter";
               setTimeout(() => {
-                count.style.animationName = "none";
+                counter.style.animationName = "none";
               }, 500);
             } else {
-              count.style.backgroundColor = "#00bfffda";
-              count.style.animationName = "color-animation-counter";
+              counter.style.backgroundColor = "#00bfffda";
+              counter.style.animationName = "color-animation-counter";
               setTimeout(() => {
-                count.style.animationName = "none";
+                counter.style.animationName = "none";
               }, 1000);
             }
           }
         }
       });
+    })
     });
-  });
 }
 plus_minus();
 let date = new Date();
