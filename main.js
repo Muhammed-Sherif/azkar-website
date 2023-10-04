@@ -104,7 +104,7 @@ async function createContent() {
     azkar.appendChild(content_area);
     //   // add title
     for (let i = 0; i < azkar_data.length; i++) {
-      //     // add div in section
+          //     // add div in section
       let content_box = document.createElement("div");
       content_box.setAttribute("class", "content-box");
       content_area.appendChild(content_box);
@@ -113,17 +113,40 @@ async function createContent() {
       content.setAttribute("class", "content");
       content_box.append(content);
       let countercontainer = document.createElement("div");
+      countercontainer.setAttribute("class", "countercontainer");
       let counter = document.createElement("div");
+      counter.setAttribute("class", `counter`);
+      // adding count-clock
+      let count_clock = document.createElement("span");
+      count_clock.setAttribute("class", "count-clock");
+      count_clock.innerHTML = `${azkar_data[i].count}`;
+      counter.appendChild(count_clock);
+      //
       let counterSpan = document.createElement("span");
       counterSpan.setAttribute("class", "counterSpan");
-      countercontainer.setAttribute("class", "countercontainer");
-      counter.setAttribute("class", `counter`);
-      // check if there is data in localStorge
       counterSpan.innerHTML = `${azkar_data[i].count}`;
       counter.appendChild(counterSpan);
+      //
+      let zekr_reset = document.createElement("span");
+      zekr_reset.setAttribute("class", "zekr-reset");
+      zekr_reset.innerHTML = `<i class="material-symbols-outlined">
+      cached
+      </i>`;
+      counter.appendChild(zekr_reset);
+      //
       countercontainer.appendChild(counter);
       content.appendChild(countercontainer);
       let counters = document.querySelectorAll(".counter");
+      counters.forEach((counter) => {
+        counter.addEventListener("click", () => {
+          counter.style.animation =
+            "color-animation-counter 1s linear  1 alternate both;";
+        });
+      });
+      let content_text = document.createElement("div");
+      content_text.setAttribute("class", "content-text");
+      content.append(content_text);
+      let contentTexts = document.querySelectorAll(".content-text");
       counters.forEach((counter) => {
         counter.addEventListener("click", () => {
           counter.style.animation =
