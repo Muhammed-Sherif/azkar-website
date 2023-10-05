@@ -293,7 +293,7 @@ a {
 .content-box .counter .count-clock {
   text-align: left;
   opacity: 0.7;
-  padding-left: 10px;
+  padding: 0 0 5px 10px;
 }
 .content-box .counter .zekr-reset {
   position: absolute;
