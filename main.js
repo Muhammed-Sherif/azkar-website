@@ -213,6 +213,12 @@ async function plus_minus() {
   await createContent();
    let count_downs = document.querySelectorAll(".count-down");
   let counters = document.querySelectorAll(".counter");
+  let resets = document.querySelectorAll(".zekr-reset");
+  resets.forEach((reset) => {
+    reset.addEventListener("click", () => {
+      reset.previousElementSibling.innerHtml = reset.previousElementSibling.previousElementSibling.innerHtml
+    })
+  })
   counters.forEach((counter, index) => {
     count_downs.forEach((count_down, i) => {
         count_down.addEventListener("click", () => {
