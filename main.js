@@ -183,7 +183,7 @@ async function createContent() {
       let contentTexts = document.querySelectorAll(".content-text") 
       counters.forEach((counter,index) => {
         contentTexts.forEach((content,i)=> {
-          if (i===index && document.documentElement.clientHeight > 670) {
+          if (i===index && document.documentElement.clientWidth > 670) {
             counter.style.minHeight = `${content.clientHeight-50}px`
           }
         })
@@ -364,3 +364,28 @@ function light_or_night_mode() {
 switchButton.addEventListener("click", () => {
   light_or_night_mode();
 });
+window.addEventListener("resize", () => {
+  // Change the layout of the page
+  const contentTexts = document.querySelectorAll(".content-text") 
+  const counters = document.querySelectorAll(".counter");
+
+  if (window.innerWidth > 670) {
+    // The screen is wide
+        counters.forEach((counter,index) => {
+        contentTexts.forEach((content,i)=> {
+          if (i===index) {
+            counter.style.minHeight = `${content.clientHeight-50}px`
+          }
+        })
+        })
+  }
+    else {
+    counters.forEach((counter,index) => {
+        contentTexts.forEach((content,i)=> {
+          if (i===index) {
+            counter.style.removeProperty("minHeight");
+          }
+        })
+        })
+  }
+})
