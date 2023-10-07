@@ -184,7 +184,7 @@ async function createContent() {
       counters.forEach((counter,index) => {
         contentTexts.forEach((content,i)=> {
           if (i===index && document.documentElement.clientHeight > 670) {
-            counter.style.minHeight = `${content.clientHeight-100}px`
+            counter.style.minHeight = `${content.clientHeight-50}px`
           }
         })
       });
@@ -214,11 +214,12 @@ async function plus_minus() {
    let count_downs = document.querySelectorAll(".count-down");
   let counters = document.querySelectorAll(".counter");
   let resets = document.querySelectorAll(".zekr-reset");
+  let resets = document.querySelectorAll(".zekr-reset");
   resets.forEach((reset) => {
     reset.addEventListener("click", () => {
-      reset.previousElementSibling.innerHtml = reset.previousElementSibling.previousElementSibling.innerHtml
-    })
-  })
+      reset.previousElementSibling.textContent = reset.previousElementSibling.previousElementSibling.textContent;
+    });
+  }); 
   counters.forEach((counter, index) => {
     count_downs.forEach((count_down, i) => {
         count_down.addEventListener("click", () => {
