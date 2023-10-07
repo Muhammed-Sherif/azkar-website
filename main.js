@@ -214,7 +214,6 @@ async function plus_minus() {
    let count_downs = document.querySelectorAll(".count-down");
   let counters = document.querySelectorAll(".counter");
   let resets = document.querySelectorAll(".zekr-reset");
-  let resets = document.querySelectorAll(".zekr-reset");
   resets.forEach((reset) => {
     reset.addEventListener("click", () => {
       reset.previousElementSibling.textContent = reset.previousElementSibling.previousElementSibling.textContent;
