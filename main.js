@@ -364,27 +364,21 @@ switchButton.addEventListener("click", () => {
   light_or_night_mode();
 });
 window.addEventListener("resize", () => {
-  // Change the layout of the page
-  const contentTexts = document.querySelectorAll(".content-text") 
+  const contentTexts = document.querySelectorAll(".content-text");
   const counters = document.querySelectorAll(".counter");
 
   if (window.innerWidth > 670) {
-    // The screen is wide
-        counters.forEach((counter,index) => {
-        contentTexts.forEach((content,i)=> {
-          if (i===index) {
-            counter.style.minHeight = `${content.clientHeight-50}px`
-          }
-        })
-        })
+    counters.forEach((counter, index) => {
+      contentTexts.forEach((content, i) => {
+        if (i === index) {
+          counter.style.minHeight = `${content.clientHeight - 50}px`;
+        }
+      });
+    });
+  } else {
+    counters.forEach((counter) => {
+      counter.style.minHeight = "0";
+    });
   }
-    else {
-    counters.forEach((counter,index) => {
-        contentTexts.forEach((content,i)=> {
-          if (i===index) {
-            counter.style.removeProperty("minHeight");
-          }
-        })
-        })
-  }
-})
+});
+
