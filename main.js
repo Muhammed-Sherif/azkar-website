@@ -217,6 +217,7 @@ async function plus_minus() {
   resets.forEach((reset) => {
     reset.addEventListener("click", () => {
       reset.previousElementSibling.textContent = reset.previousElementSibling.previousElementSibling.textContent;
+      reset.parentElement.style.backgroundColor = "#34affc"
     });
   }); 
   counters.forEach((counter, index) => {
