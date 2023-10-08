@@ -70,11 +70,23 @@ async function createContent() {
   if (Math.floor(Math.random() * 2) === 0) {
     let rondomNumber = Math.floor(Math.random() * azkar_sabah_data.length);
     rondom_zekr.innerHTML = azkar_sabah_data[rondomNumber].mainText;
-    zekr_info.innerHTML =  azkar_sabah_data[rondomNumber].infoText;
+    if (azkar_sabah_data[rondomNumber].infoText !== "") {
+      zekr_info.innerHTML =  azkar_sabah_data[rondomNumber].infoText;
+    }
+    else { 
+    let hr = document.querySelector("hr");
+    hr.style.display = "none"
+    }
+    
   } else {
     let rondomNumber = Math.floor(Math.random() * azkar_masaa_data.length);
         rondom_zekr.innerHTML = azkar_masaa_data[rondomNumber].mainText;
-        zekr_info.innerHTML =  azkar_masaa_data[rondomNumber].infoText;
+        if (azkar_masaa_data[rondomNumber].infoText !== "") {
+           zekr_info.innerHTML =  azkar_masaa_data[rondomNumber].infoText;
+         }
+    else { 
+    let hr = document.querySelector("hr");
+    hr.style.display = "none"
   }
   function create_zekr_page(azkar_name, azkar_title_name, azkar_data) {
     let azkar = document.createElement("div");
