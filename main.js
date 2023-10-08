@@ -37,8 +37,6 @@ async function fetchData() {
 }
 async function createContent() {
   await fetchData();
-  let statistics = document.querySelector(".home");
-  let section = document.querySelector(".azkar-area");
   // adding date
   let public_date = document.querySelector(".public-date");
   let higry_date = document.querySelector(".higry-date");
@@ -64,30 +62,24 @@ async function createContent() {
   //
   // get rondom zekr span
   let rondom_zekr = document.querySelector(".rondom-zekr span");
-  let zekr_info = document.querySelector("span.zekr-info");
-  // get rondom zekr
-
-  if (Math.floor(Math.random() * 2) === 0) {
-    let rondomNumber = Math.floor(Math.random() * azkar_sabah_data.length);
-    rondom_zekr.innerHTML = azkar_sabah_data[rondomNumber].mainText;
-    if (azkar_sabah_data[rondomNumber].infoText !== "") {
-      zekr_info.innerHTML =  azkar_sabah_data[rondomNumber].infoText;
-    }
-    else { 
-    let hr = document.querySelector("hr");
-    hr.style.display = "none"
-    }
-    
-  } else {
-    let rondomNumber = Math.floor(Math.random() * azkar_masaa_data.length);
-        rondom_zekr.innerHTML = azkar_masaa_data[rondomNumber].mainText;
-        if (azkar_masaa_data[rondomNumber].infoText !== "") {
-           zekr_info.innerHTML =  azkar_masaa_data[rondomNumber].infoText;
-         }
-    else { 
-    let hr = document.querySelector("hr");
-    hr.style.display = "none"
-  }
+  let zekr_info = document.querySelector("span.zekr-info");
+  // get rondom zekr
+  if (Math.floor(Math.random() * 2) === 0) {
+    let rondomNumber = Math.floor(Math.random() * azkar_sabah_data.length);
+    rondom_zekr.innerHTML = azkar_sabah_data[rondomNumber].mainText;
+    if (azkar_sabah_data[rondomNumber].infoText !== "") {
+      zekr_info.innerHTML = azkar_sabah_data[rondomNumber].infoText;
+    }
+  } else {
+    let rondomNumber = Math.floor(Math.random() * azkar_masaa_data.length);
+    rondom_zekr.innerHTML = azkar_masaa_data[rondomNumber].mainText;
+    if (azkar_masaa_data[rondomNumber].infoText !== "") {
+      zekr_info.innerHTML = azkar_masaa_data[rondomNumber].infoText;
+    } else {
+      let hr = document.querySelector("hr");
+      hr.style.display = "none";
+    }
+  }
   function create_zekr_page(azkar_name, azkar_title_name, azkar_data) {
     let azkar = document.createElement("div");
     azkar.setAttribute("id", `${azkar_name}`);
@@ -152,7 +144,7 @@ async function createContent() {
       counters.forEach((counter) => {
         counter.addEventListener("click", () => {
           counter.style.animation =
-          "color-animation-counter 1s linear  1 alternate both;";
+            "color-animation-counter 1s linear  1 alternate both;";
         });
       });
       let content_text = document.createElement("div");
@@ -192,13 +184,13 @@ async function createContent() {
         infoTextcontainer.appendChild(infoText);
         content_text.appendChild(infoTextcontainer);
       }
-      let contentTexts = document.querySelectorAll(".content-text") 
-      counters.forEach((counter,index) => {
-        contentTexts.forEach((content,i)=> {
-          if (i===index && document.documentElement.clientWidth > 670) {
-            counter.style.minHeight = `${content.clientHeight-50}px`
+      let contentTexts = document.querySelectorAll(".content-text");
+      counters.forEach((counter, index) => {
+        contentTexts.forEach((content, i) => {
+          if (i === index && document.documentElement.clientWidth > 670) {
+            counter.style.minHeight = `${content.clientHeight - 50}px`;
           }
-        })
+        });
       });
     }
   }
@@ -223,18 +215,19 @@ async function createContent() {
 }
 async function plus_minus() {
   await createContent();
-   let count_downs = document.querySelectorAll(".count-down");
+  let count_downs = document.querySelectorAll(".count-down");
   let counters = document.querySelectorAll(".counter");
   let resets = document.querySelectorAll(".zekr-reset");
   resets.forEach((reset) => {
     reset.addEventListener("click", () => {
-      reset.previousElementSibling.textContent = reset.previousElementSibling.previousElementSibling.textContent;
-      reset.parentElement.style.backgroundColor = "#34affc"
+      reset.previousElementSibling.textContent =
+        reset.previousElementSibling.previousElementSibling.textContent;
+        reset.parentElement.style.backgroundColor = "#34affc"
     });
-  }); 
+  });
   counters.forEach((counter, index) => {
     count_downs.forEach((count_down, i) => {
-        count_down.addEventListener("click", () => {
+      count_down.addEventListener("click", () => {
         if (i === index) {
           if (count_down.innerHTML > 0) {
             count_down.innerHTML -= 1;
@@ -254,10 +247,11 @@ async function plus_minus() {
           }
         }
       });
-    })
     });
+  });
 }
 plus_minus();
+let date = new Date();
 let footer = document.createElement("footer");
 let span = document.createElement("span");
 let footer_text = document.createTextNode(
