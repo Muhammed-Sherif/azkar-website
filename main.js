@@ -258,7 +258,6 @@ async function plus_minus() {
     });
 }
 plus_minus();
-let date = new Date();
 let footer = document.createElement("footer");
 let span = document.createElement("span");
 let footer_text = document.createTextNode(
