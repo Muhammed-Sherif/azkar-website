@@ -620,7 +620,7 @@ span.title {
 .content-box , .content-box .content , .landing-area , .light-mode-icon,ul,a,.home,.date,.home-content,
 .content-area,.container,.sum-of-azkar .text-container,.statistics-area,.sum-of-azkar,.azkar-sabah-statistic,
 .azkar-masaa-statistic,.azkar-sabah-statistic span.count,
-.azkar-masaa-statistic span.count
+.azkar-masaa-statistic span.count ,
 .night-mode-icon , footer , .contact-links ,.title-container , .content-box .counter .count-down , .countercontainer {
   display : flex ;
 }
