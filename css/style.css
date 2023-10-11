@@ -289,6 +289,7 @@ a {
   font-family: initial;
   align-items: center;
   justify-content: center;
+  transform: translateY(-4px)
 }
 .content-box .counter .count-clock {
   text-align: left;
