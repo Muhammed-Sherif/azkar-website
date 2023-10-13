@@ -70,6 +70,10 @@ async function createContent() {
     if (azkar_sabah_data[rondomNumber].infoText !== "") {
       zekr_info.innerHTML = azkar_sabah_data[rondomNumber].infoText;
     }
+    else {
+      let hr = document.querySelector("hr");
+      hr.style.display = "none";
+    }
   } else {
     let rondomNumber = Math.floor(Math.random() * azkar_masaa_data.length);
     rondom_zekr.innerHTML = azkar_masaa_data[rondomNumber].mainText;
