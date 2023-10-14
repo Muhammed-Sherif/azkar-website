@@ -566,6 +566,9 @@ span.title {
   ul {
     justify-content: center;
   }
+    .content-text {
+    padding-right: 0;
+    }
 }
 @media screen and (width<=390px) {
   .public-date {
