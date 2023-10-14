@@ -562,6 +562,9 @@ span.title {
     width: 250px;
     height: 115px;
   }
+  .content-text {
+    padding: 25px;
+  }
 }
 @media screen and (width<=390px) {
   .public-date {
