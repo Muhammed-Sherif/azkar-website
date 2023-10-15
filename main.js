@@ -234,13 +234,12 @@ async function setDataCount() {
       if (window.localStorage.length>0) {
         let counter_data = JSON.parse(window.localStorage.getItem("count"))
         let count_downs = document.querySelectorAll(".count-down") ;
-        count_downs.forEach((span)=>{
+        count_downs.forEach((span, i)=>{
             span.innerHTML = `${counter_data[i].count}`;
+            if (counter_data[i].count == 0) {
+              span.parentElement.style.backgroundColor = "#87ceeb"
+            }
           })
-        if (counter_data[i].count == 0) {
-          count_clock.parentElement.style.backgroundColor = "#87ceeb"
-        }
-        
       }
 };
 }
