@@ -229,7 +229,6 @@ function get_data_count() {
             } 
 async function setDataCount() {
     await createContent();
-    window.onload = () => {
       // check if there is data in localStorge
       if (window.localStorage.length>0) {
         let counter_data = JSON.parse(window.localStorage.getItem("count"))
@@ -241,7 +240,6 @@ async function setDataCount() {
             }
           })
       }
-};
 }
 async function plus_minus() {
   await setDataCount();
@@ -418,3 +416,6 @@ window.addEventListener("resize", () => {
     });
   }
 });
+window.onload = () => { 
+setDataCount()
+}
