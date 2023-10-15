@@ -136,7 +136,7 @@ async function createContent() {
       // check if there is data in localStorge
       if (window.localStorage.length>0) {
         let counter_data = JSON.parse(window.localStorage.getItem("count"))
-        counterSpan.innerHTML = `${counter_data[i].count}`;
+        count_down.innerHTML = `${counter_data[i].count}`;
       }
       else {
         count_down.innerHTML = `${azkar_data[i].count}`;     
