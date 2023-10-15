@@ -217,6 +217,7 @@ async function createContent() {
       }
     });
   });
+  return 0 ;
 }
 function get_data_count() {
           let count_downs = document.querySelectorAll(".count-down");
@@ -227,8 +228,7 @@ function get_data_count() {
             window.localStorage.setItem("count",`${JSON.stringify(counter_data)}`)
           })
             } 
-async function setDataCount() {
-    await createContent();
+   function setDataCount() {
       // check if there is data in localStorge
       if (window.localStorage.length>0) {
         let counter_data = JSON.parse(window.localStorage.getItem("count"))
@@ -242,7 +242,7 @@ async function setDataCount() {
       }
 }
 async function plus_minus() {
-  await setDataCount();
+  await createContent();
   let count_downs = document.querySelectorAll(".count-down");
   let counters = document.querySelectorAll(".counter");
   let resets = document.querySelectorAll(".zekr-reset");
@@ -416,6 +416,7 @@ window.addEventListener("resize", () => {
     });
   }
 });
-window.onload = () => { 
-setDataCount()
+if (createContent() === 0) {
+  setDataCount();
 }
+
