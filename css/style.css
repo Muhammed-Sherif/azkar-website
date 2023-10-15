@@ -500,7 +500,7 @@ i.fa-regular.fa-sun {
 }
 .content-text {
   width: calc(100%-150px);
-  text-align: center;
+  text-align: right;
   padding-right: 40px;
   margin: 0 auto;
 }
