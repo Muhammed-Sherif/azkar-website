@@ -18,6 +18,7 @@ let azkar_names = [
   "azkar_sleeping",
   "tasabeh",
 ];
+let counter_data = [] ;
 let body = document.querySelector("body");
 async function fetchData() {
   try {
@@ -132,7 +133,15 @@ async function createContent() {
       //
       let count_down = document.createElement("span");
       count_down.setAttribute("class", "count-down");
-      count_down.innerHTML = `${azkar_data[i].count}`;
+      // check if there is data in localStorge
+      if (window.localStorage.length>0) {
+        let counter_data = JSON.parse(window.localStorage.getItem("count"))
+        counterSpan.innerHTML = `${counter_data[i].count}`;
+      }
+      else {
+        count_down.innerHTML = `${azkar_data[i].count}`;     
+      }
+      
       counter.appendChild(count_down);
       //
       let zekr_reset = document.createElement("span");
@@ -217,6 +226,15 @@ async function createContent() {
     });
   });
 }
+function get_data_count() {
+          let count_downs = document.querySelectorAll(".count-down");
+          counter_data = []
+          window.sessionStorage.clear()
+          count_downs.forEach((span)=>{
+            counter_data.push({"count":`${span.innerHTML}`})
+            window.localStorage.setItem("count",`${JSON.stringify(counter_data)}`)
+          })
+            }
 async function plus_minus() {
   await createContent();
   let count_downs = document.querySelectorAll(".count-down");
@@ -235,6 +253,7 @@ async function plus_minus() {
         if (i === index) {
           if (count_down.innerHTML > 0) {
             count_down.innerHTML -= 1;
+             get_data_count()
             if (count_down.innerHTML == 0) {
               counter.style.backgroundColor = "var(--minor-color)";
               counter.style.animationName = "color-animation-counter";
