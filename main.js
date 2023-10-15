@@ -217,7 +217,6 @@ async function createContent() {
       }
     });
   });
-  return 0 ;
 }
 function get_data_count() {
           let count_downs = document.querySelectorAll(".count-down");
@@ -243,6 +242,7 @@ function get_data_count() {
 }
 async function plus_minus() {
   await createContent();
+  setDataCount();
   let count_downs = document.querySelectorAll(".count-down");
   let counters = document.querySelectorAll(".counter");
   let resets = document.querySelectorAll(".zekr-reset");
@@ -416,7 +416,3 @@ window.addEventListener("resize", () => {
     });
   }
 });
-if (createContent() === 0) {
-  setDataCount();
-}
-
