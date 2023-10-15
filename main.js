@@ -136,6 +136,9 @@ async function createContent() {
       // check if there is data in localStorge
       if (window.localStorage.length>0) {
         let counter_data = JSON.parse(window.localStorage.getItem("count"))
+        if (counter_data[i].count == 0) {
+          count_clock.parentElement.style.backgroundColor = "#87ceeb"
+        }
         count_down.innerHTML = `${counter_data[i].count}`;
       }
       else {
