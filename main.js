@@ -248,8 +248,8 @@ async function plus_minus() {
   let resets = document.querySelectorAll(".zekr-reset");
   resets.forEach((reset) => {
     reset.addEventListener("click", () => {
-      reset.previousElementSibling.textContent =
-        reset.previousElementSibling.previousElementSibling.textContent;
+      reset.previousElementSibling.textContent = reset.previousElementSibling.previousElementSibling.textContent;
+        get_data_count()
         reset.parentElement.style.backgroundColor = "#34affc"
     });
   });
