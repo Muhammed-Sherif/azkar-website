@@ -232,7 +232,7 @@ async function createContent() {
 function get_data_count() {
           let count_downs = document.querySelectorAll(".count-down");
           counter_data = []
-          window.sessionStorage.clear()
+          window.localStorage.clear()
           count_downs.forEach((span)=>{
             counter_data.push({"count":`${span.innerHTML}`})
             window.localStorage.setItem("count",`${JSON.stringify(counter_data)}`)
