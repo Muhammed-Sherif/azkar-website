@@ -332,7 +332,7 @@ a {
 }
 .content-box .content .mainTextContainer {
   display: block;
-  text-align: right;
+  text-align: center;
   margin-top: 5px;
 }
 .content-box .content .mainTextContainer::selection,
@@ -501,6 +501,7 @@ i.fa-regular.fa-sun {
   width: calc(100%-150px);
   padding-right: 40px;
   margin: 0 auto;
+  text-align: center;
 }
 .content-box .content .infoTextcontainer {
   display: block;
