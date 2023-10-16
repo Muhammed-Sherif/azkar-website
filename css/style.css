@@ -315,7 +315,7 @@ a {
   font-family: initial;
   align-items: center;
   justify-content: center;
-  transform: translateY(-4px)
+  transform: translateY(-4px) ;
   width: 100%;
   height:auto;
 }
