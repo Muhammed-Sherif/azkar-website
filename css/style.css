@@ -292,11 +292,7 @@ a {
   justify-content: center;
   transform: translateY(-4px)
 }
-.content-box .counter .count-clock {
-  text-align: left;
-  opacity: 0.7;
-  padding-left: 10px;
-}
+
 .content-box .counter .zekr-reset {
   position: absolute;
   bottom: 0;
@@ -311,11 +307,18 @@ a {
 }
 .zekr-reset , .count-down , .count-clock {
   display: block;
-  width: 100%;
+  width: fit-content;
   color: white;
   font-weight: 900;
-  height: calc(100%/3);
+  height: fit-content;
 } 
+.content-box .counter .count-clock {
+  text-align: left;
+  opacity: 0.7;
+  padding-left: 10px;
+  width: 100%;
+  height: calc(100%/3);
+}
 .content-box .counter span::selection {
   background-color: transparent;
 }
