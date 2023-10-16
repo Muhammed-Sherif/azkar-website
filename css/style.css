@@ -318,7 +318,7 @@ a {
   justify-content: center;
   transform: translateY(-4px) ;
   width: 100%;
-  height:auto;
+  height:-webkit-fill-available;
 }
 .content-box .counter span::selection {
   background-color: transparent;
