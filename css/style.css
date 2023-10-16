@@ -285,14 +285,6 @@ a {
   align-items: center;
   color: #000000b5;
 }
-.content-box .counter .count-down {
-  font-size: 50px;
-  font-family: initial;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-4px)
-}
-
 .content-box .counter .zekr-reset {
   position: absolute;
   bottom: 0;
@@ -316,8 +308,16 @@ a {
   text-align: left;
   opacity: 0.7;
   padding-left: 10px;
+  
+}
+.content-box .counter .count-down {
+  font-size: 50px;
+  font-family: initial;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-4px)
   width: 100%;
-  height: calc(100%/3);
+  height:auto;
 }
 .content-box .counter span::selection {
   background-color: transparent;
