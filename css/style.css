@@ -576,7 +576,7 @@ span.title {
     padding-right: 0;
     }
   .count-down {
-    padding-right: 5px;
+    padding-right: 7px;
   }
 }
 @media screen and (width<=390px) {
