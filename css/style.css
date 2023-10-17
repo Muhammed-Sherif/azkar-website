@@ -575,6 +575,9 @@ span.title {
     .content-text {
     padding-right: 0;
     }
+  .count-down {
+    padding-right: 5px;
+  }
 }
 @media screen and (width<=390px) {
   .public-date {
