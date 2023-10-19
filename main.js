@@ -273,7 +273,7 @@ async function plus_minus() {
   // Iterate over the countdown array using foreach.
          countDowns.forEach((count_downs) => {
        // Call the function with the countdown as an argument.
-         reset_finished_azkar_counter(count_downs) ;
+          setInterval(reset_finished_azkar_counter(count_downs), 120000);
           });
   resets.forEach((reset) => {
     reset.addEventListener("click", () => {
