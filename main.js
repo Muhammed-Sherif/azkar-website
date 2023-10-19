@@ -243,7 +243,7 @@ function get_data_count() {
 }
 function reset_finished_azkar_counter() {
   await createContent();
-  get_data_count()
+  setDataCount();
   let counters = document.querySelectorAll(".counter");
   let resets = document.querySelectorAll(".zekr-reset");
   const  azkar_alsabah_count_down  = document.querySelectorAll("#azkar_alsabah_count");
@@ -266,11 +266,11 @@ function reset_finished_azkar_counter() {
    count_downs.forEach((count_down) => {
    count_down.textContent = count_down.previousElementSibling.textContent;
    count_down.parentElement.style.backgroundColor = "#34affc"
+     get_data_count()
 })
 }
 async function plus_minus() {
   await reset_finished_azkar_counter();
-  setDataCount();
   let counters = document.querySelectorAll(".counter");
   let resets = document.querySelectorAll(".zekr-reset");
   let count_downs = document.querySelectorAll(".count-down");
