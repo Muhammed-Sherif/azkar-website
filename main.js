@@ -265,7 +265,7 @@ async function plus_minus() {
   let resets = document.querySelectorAll(".zekr-reset");
   const  azkar_alsabah_count_down  = document.querySelectorAll("#azkar_alsabah_count");
   const  azkar_almasaa_count_down = document.querySelectorAll("#azkar_almasaa_count");
-  const  azkar_sleeping_count_down = document.querySelectorAll("#azkar_after_alsalah_count");
+  const  azkar_after_alsalah_count_down = document.querySelectorAll("#azkar_after_alsalah_count");
   const  azkar_sleeping_count_down = document.querySelectorAll("#azkar_sleeping_count");
   const  tasabeh_count_down = document.querySelectorAll("#tasabeh_count");
 // Create an array
