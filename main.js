@@ -263,11 +263,13 @@ async function reset_finished_azkar_counter() {
   });
   });
   // If none of the countdowns are not equal to 0, reset the data count.
-   count_downs.forEach((count_down) => {
-   count_down.textContent = count_down.previousElementSibling.textContent;
-   count_down.parentElement.style.backgroundColor = "#34affc"
+   countDowns.forEach((count_downs) => {
+    count_downs.forEach((count_down) => {
+    count_down.textContent = count_down.previousElementSibling.textContent;
+    count_down.parentElement.style.backgroundColor = "#34affc"
      get_data_count()
 })
+})    
 }
 async function plus_minus() {
   await reset_finished_azkar_counter();
