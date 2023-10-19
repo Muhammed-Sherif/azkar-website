@@ -246,7 +246,7 @@ function reset_finished_azkar_counter(count_downs) {
   // Iterate over the countdowns array.
   count_downs.forEach((count_down) => {
     // If any of the countdowns are not equal to 0, return 0.
-    if (count_down.innerHTML != 0) {
+    if (count_down.innerHTML != "0") {
       return 0;
     }
   });
