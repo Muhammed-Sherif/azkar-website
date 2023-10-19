@@ -241,7 +241,7 @@ function get_data_count() {
           })
       }
 }
-function reset_finished_azkar_counter() {
+async function reset_finished_azkar_counter() {
   await createContent();
   setDataCount();
   let counters = document.querySelectorAll(".counter");
