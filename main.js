@@ -133,7 +133,7 @@ async function createContent() {
       //
       let count_down = document.createElement("span");
       count_down.setAttribute("class", "count-down");
-      count_down.setAttribute("id", `${azkar_name}`);
+      count_down.setAttribute("id", `${azkar_name}_count`);
       count_down.innerHTML = `${azkar_data[i].count}`
       counter.appendChild(count_down);
       //
