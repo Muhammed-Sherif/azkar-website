@@ -252,7 +252,7 @@ function reset_finished_azkar_counter(count_downs) {
   });
 
   // If none of the countdowns are not equal to 0, reset the data count.
-   count_downs.foreach((count_down) => {
+   count_downs.forEach((count_down) => {
     count_down.textContent = count_down.previousElementSibling.textContent;
 })
 }
@@ -271,7 +271,7 @@ async function plus_minus() {
 // Create an array
   let countDowns = [azkar_alsabah_count_down, azkar_almasaa_count_down ,azkar_sleeping_count_down , azkar_sleeping_count_down , tasabeh_count_down ]
 // Iterate over the countdown array using foreach.
-countDowns.foreach((count_downs) => {
+countDowns.forEach((count_downs) => {
   // Call the function with the countdown as an argument.
  reset_finished_azkar_counter(count_downs) ;
 });
