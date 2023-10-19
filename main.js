@@ -244,7 +244,7 @@ function get_data_count() {
 function reset_finished_azkar_counter(count_downs) {
    get_data_count()
   // Iterate over the countdowns array.
-  count_downs.foreach((count_down) => {
+  count_downs.forEach((count_down) => {
     // If any of the countdowns are not equal to 0, return 0.
     if (count_down.innerHTML != 0) {
       return 0;
