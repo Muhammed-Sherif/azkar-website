@@ -270,12 +270,6 @@ async function plus_minus() {
   const  tasabeh_count_down = document.querySelectorAll("#tasabeh_count");
 // Create an array
   let countDowns = [azkar_alsabah_count_down, azkar_almasaa_count_down ,azkar_sleeping_count_down , azkar_sleeping_count_down , tasabeh_count_down ]
-// Iterate over the countdown array using foreach.
-countDowns.forEach((count_downs) => {
-  // Call the function with the countdown as an argument.
- reset_finished_azkar_counter(count_downs) ;
-});
-  
   resets.forEach((reset) => {
     reset.addEventListener("click", () => {
       reset.previousElementSibling.textContent = reset.previousElementSibling.previousElementSibling.textContent;
@@ -286,6 +280,11 @@ countDowns.forEach((count_downs) => {
   counters.forEach((counter, index) => {
     count_downs.forEach((count_down, i) => {
       count_down.addEventListener("click", () => {
+        // Iterate over the countdown array using foreach.
+         countDowns.forEach((count_downs) => {
+       // Call the function with the countdown as an argument.
+         reset_finished_azkar_counter(count_downs) ;
+          });
         if (i === index) {
           if (count_down.innerHTML > 0) {
             count_down.innerHTML -= 1;
