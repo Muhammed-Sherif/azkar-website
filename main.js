@@ -241,25 +241,9 @@ function get_data_count() {
           })
       }
 }
-function reset_finished_azkar_counter(count_downs) {
-   get_data_count()
-  // Iterate over the countdowns array.
-  count_downs.forEach((count_down) => {
-    // If any of the countdowns are not equal to 0, return 0.
-    if (count_down.innerHTML != "0") {
-      return 0;
-    }
-  });
-
-  // If none of the countdowns are not equal to 0, reset the data count.
-   count_downs.forEach((count_down) => {
-    count_down.textContent = count_down.previousElementSibling.textContent;
-})
-}
-async function plus_minus() {
+function reset_finished_azkar_counter() {
   await createContent();
-  setDataCount();
-  let count_downs = document.querySelectorAll(".count-down");
+  get_data_count()
   let counters = document.querySelectorAll(".counter");
   let resets = document.querySelectorAll(".zekr-reset");
   const  azkar_alsabah_count_down  = document.querySelectorAll("#azkar_alsabah_count");
@@ -269,12 +253,27 @@ async function plus_minus() {
   const  tasabeh_count_down = document.querySelectorAll("#tasabeh_count");
 // Create an array
   let countDowns = [azkar_alsabah_count_down, azkar_almasaa_count_down ,azkar_sleeping_count_down , azkar_sleeping_count_down , tasabeh_count_down ]
-
-  // Iterate over the countdown array using foreach.
-         countDowns.forEach((count_downs) => {
-       // Call the function with the countdown as an argument.
-          setInterval(reset_finished_azkar_counter(count_downs), 120000);
-          });
+  countDowns.forEach((count_downs) => {
+  // Iterate over the countdowns array.
+  count_downs.forEach((count_down) => {
+    // If any of the countdowns are not equal to 0, return 0.
+    if (count_down.innerHTML != "0") {
+      return 0;
+    }
+  });
+  });
+  // If none of the countdowns are not equal to 0, reset the data count.
+   count_downs.forEach((count_down) => {
+   count_down.textContent = count_down.previousElementSibling.textContent;
+   count_down.parentElement.style.backgroundColor = "#34affc"
+})
+}
+async function plus_minus() {
+  await reset_finished_azkar_counter();
+  setDataCount();
+  let counters = document.querySelectorAll(".counter");
+  let resets = document.querySelectorAll(".zekr-reset");
+  let count_downs = document.querySelectorAll(".count-down");
   resets.forEach((reset) => {
     reset.addEventListener("click", () => {
       reset.previousElementSibling.textContent = reset.previousElementSibling.previousElementSibling.textContent;
