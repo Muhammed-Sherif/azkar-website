@@ -281,6 +281,7 @@ async function reset_finished_azkar_counter() {
       // Reset all of the countdown elements
       count_downs.forEach((count_down) => {
         count_down.textContent = count_down.previousElementSibling.textContent;
+        count_down.parentElement.style.backgroundColor = "#34affc"
       });
 
       // Get the new data count
