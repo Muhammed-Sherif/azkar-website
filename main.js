@@ -256,17 +256,17 @@ let countDowns = [azkar_alsabah_count_down, azkar_almasaa_count_down ,azkar_slee
 
 // Wait for the countDowns.forEach loop to finish before executing the if statement.
 await countDowns.forEach((count_downs) => {
-count_downs.forEach((count_down) => {
-if (count_down.innerHTML != "0") {
-return;
-}
+const filteredCount = count_downs.filter((count_down) => {
+return count_down.innerHTML != "0";
 });
-count_downs.forEach((count_down) => {
+if (filteredCount.length == 0) {
+ count_downs.forEach((count_down) => {
  count_down.textContent = count_down.previousElementSibling.textContent
-}); 
-});
+  }); 
+  });
   get_data_count()
   }
+ }
 async function plus_minus() {
   await reset_finished_azkar_counter();
   setDataCount();
