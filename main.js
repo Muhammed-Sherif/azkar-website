@@ -262,6 +262,9 @@ if (count_down.innerHTML != "0") {
 return;
 }
 });
+count_downs.forEach((count_down) => {
+ count_down.textContent = count_down.previousElementSibling.textContent
+}); 
 });
   }
 async function plus_minus() {
