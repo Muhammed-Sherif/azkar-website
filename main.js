@@ -243,7 +243,7 @@ function get_data_count() {
 }
 async function reset_finished_azkar_counter() {
   await createContent();
-
+   setDataCount();
   // Get all of the countdown elements
   const counters = document.querySelectorAll(".counter");
   const resets = document.querySelectorAll(".zekr-reset");
@@ -296,7 +296,6 @@ async function reset_finished_azkar_counter() {
 
 async function plus_minus() {
   await reset_finished_azkar_counter();
-  setDataCount();
   let counters = document.querySelectorAll(".counter");
   let resets = document.querySelectorAll(".zekr-reset");
   let count_downs = document.querySelectorAll(".count-down");
