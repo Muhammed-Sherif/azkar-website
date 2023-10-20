@@ -259,14 +259,15 @@ await countDowns.forEach((count_downs) => {
 const filteredCount = count_downs.filter((count_down) => {
 return count_down.innerHTML != "0";
 });
+});
 if (filteredCount.length == 0) {
  count_downs.forEach((count_down) => {
  count_down.textContent = count_down.previousElementSibling.textContent
   }); 
-  });
-  get_data_count()
-  }
+ get_data_count()
+ };
  }
+
 async function plus_minus() {
   await reset_finished_azkar_counter();
   setDataCount();
