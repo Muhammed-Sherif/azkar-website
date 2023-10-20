@@ -277,7 +277,7 @@ async function reset_finished_azkar_counter() {
       (count_down) => +count_down.textContent > 0 );
       console.log(filteredCount)
     // If the filteredCount array is empty, then all of the countdowns have finished
-    if (filteredCount.length == count_downs.length) {
+    if (filteredCount.length == 0) {
       // Reset all of the countdown elements
       count_downs.forEach((count_down) => {
         count_down.textContent = count_down.previousElementSibling.textContent;
