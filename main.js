@@ -242,31 +242,44 @@ function get_data_count() {
       }
 }
 async function reset_finished_azkar_counter() {
-await createContent();
-let counters = document.querySelectorAll(".counter");
-let resets = document.querySelectorAll(".zekr-reset");
-const  azkar_alsabah_count_down  = document.querySelectorAll("#azkar_alsabah_count");
-const  azkar_almasaa_count_down = document.querySelectorAll("#azkar_almasaa_count");
-const  azkar_after_alsalah_count_down = document.querySelectorAll("#azkar_after_alsalah_count");
-const  azkar_sleeping_count_down = document.querySelectorAll("#azkar_sleeping_count");
-const  tasabeh_count_down = document.querySelectorAll("#tasabeh_count");
+  await createContent();
 
-// Create an array
-let countDowns = [azkar_alsabah_count_down, azkar_almasaa_count_down ,azkar_sleeping_count_down , azkar_sleeping_count_down , tasabeh_count_down ]
+  // Get all of the countdown elements
+  const counters = document.querySelectorAll(".counter");
+  const resets = document.querySelectorAll(".zekr-reset");
+  const azkar_alsabah_count_down = document.querySelectorAll("#azkar_alsabah_count");
+  const azkar_almasaa_count_down = document.querySelectorAll("#azkar_almasaa_count");
+  const azkar_after_alsalah_count_down = document.querySelectorAll("#azkar_after_alsalah_count");
+  const azkar_sleeping_count_down = document.querySelectorAll("#azkar_sleeping_count");
+  const tasabeh_count_down = document.querySelectorAll("#tasabeh_count");
 
-// Wait for the countDowns.forEach loop to finish before executing the if statement.
-await countDowns.forEach((count_downs) => {
-const filteredCount = count_downs.filter((count_down) => {
-return count_down.innerHTML != "0";
-});
-});
-if (filteredCount.length == 0) {
- count_downs.forEach((count_down) => {
- count_down.textContent = count_down.previousElementSibling.textContent
-  }); 
- get_data_count()
- };
- }
+  // Create an array of all of the countdown elements
+  const countDowns = [
+    azkar_alsabah_count_down,
+    azkar_almasaa_count_down,
+    azkar_after_alsalah_count_down,
+    azkar_sleeping_count_down,
+    tasabeh_count_down,
+  ];
+
+  // Wait for the countDowns.forEach loop to finish before executing the if statement
+  await countDowns.forEach((count_downs) => {
+    // Filter the countDowns array to only include the elements that have an innerHTML property that is not equal to "0"
+    const filteredCount = count_downs.filter((count_down) => count_down.innerHTML !== "0");
+  });
+
+  // If the filteredCount array is empty, then all of the countdowns have finished
+  if (filteredCount.length === 0) {
+    // Reset all of the countdown elements
+    count_downs.forEach((count_down) => {
+      count_down.textContent = count_down.previousElementSibling.textContent;
+    });
+
+    // Get the new data count
+    get_data_count();
+  }
+}
+
 
 async function plus_minus() {
   await reset_finished_azkar_counter();
