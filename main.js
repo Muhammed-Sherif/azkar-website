@@ -273,7 +273,7 @@ async function reset_finished_azkar_counter() {
   // Wait for the countDowns.forEach loop to finish before executing the if statement
   countDowns.forEach((count_downs) => {
     // Filter the countDowns array to only include the elements that have an innerHTML property that is not equal to "0"
-    const filteredCount = (count_downs).filter(
+    const filteredCount = Array.from(count_downs).filter(
       (count_down) => +count_down.textContent > 0 );
       console.log(filteredCount)
     // If the filteredCount array is empty, then all of the countdowns have finished
