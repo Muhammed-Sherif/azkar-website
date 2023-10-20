@@ -283,11 +283,10 @@ async function reset_finished_azkar_counter() {
         count_down.textContent = count_down.previousElementSibling.textContent;
         count_down.parentElement.style.backgroundColor = "#34affc"
       });
-
-      // Get the new data count
-      get_data_count();
     }
   });
+        // Get the new data count
+      get_data_count();
 }
 
 async function plus_minus() {
