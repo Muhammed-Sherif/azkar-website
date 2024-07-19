@@ -18,7 +18,7 @@ let azkar_names = [
   "azkar_sleeping",
   "tasabeh",
 ];
-let counter_data = [] ;
+let counter_data = [];
 let body = document.querySelector("body");
 async function fetchData() {
   try {
@@ -56,10 +56,8 @@ async function createContent() {
     year: "numeric",
     numerals: "arabic",
   };
-  higry_date.innerHTML = `${new Intl.DateTimeFormat(
-    "ar-FR-u-ca-islamic",
-    option
-  ).format(date)}`;
+  let hijriDate = new Date(date.setDate(date.getDate() - 1));
+  higry_date.innerHTML = `${new Intl.DateTimeFormat("ar-FR-u-ca-islamic", option).format(hijriDate)}`;  
   //
   // get rondom zekr span
   let rondom_zekr = document.querySelector(".rondom-zekr span");
@@ -70,8 +68,7 @@ async function createContent() {
     rondom_zekr.innerHTML = azkar_sabah_data[rondomNumber].mainText;
     if (azkar_sabah_data[rondomNumber].infoText !== "") {
       zekr_info.innerHTML = azkar_sabah_data[rondomNumber].infoText;
-    }
-    else {
+    } else {
       let hr = document.querySelector("hr");
       hr.style.display = "none";
     }
@@ -85,15 +82,51 @@ async function createContent() {
       hr.style.display = "none";
     }
   }
+  // Function to go back to the home view
+  window.goBack = function() {
+    let siteSections = document.querySelectorAll(".landing-area .section");
+    let homeElement = document.querySelector(".home");
+
+    // Hide all sections
+    siteSections.forEach((section) => {
+        section.setAttribute("data-active", "none");
+        section.style.opacity = 0; // Added for fade-out effect
+        section.style.display = "none" ; // Added for fade-out effect
+    });
+
+    // Show the home element
+    homeElement.setAttribute("data-active", "active");
+    homeElement.style.opacity = 1; // Added for fade-in effect
+    homeElement.style.display = "block";
+
+    // Smooth scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   function create_zekr_page(azkar_name, azkar_title_name, azkar_data) {
     let azkar = document.createElement("div");
     azkar.setAttribute("id", `${azkar_name}`);
+    azkar.className = "section";
     let landing_area = document.querySelector(".landing-area");
     landing_area.appendChild(azkar);
     let container = document.createElement("div");
     container.className = "container";
     let title_container = document.createElement("div");
     title_container.className = "title-container";
+    ///////////////////////////////////////////////////////////////////////
+    let iconBack = document.createElement("div");
+    iconBack.className = "icon-back";
+    iconBack.addEventListener("click",()=>{
+      goBack()
+    })
+    let span = document.createElement("span");
+    span.className = "material-symbols-outlined";
+    let spanText = document.createTextNode("redo");
+    span.appendChild(spanText);
+    container.appendChild(iconBack);
+    iconBack.appendChild(span);
+
+    ///////////////////////////////////////////////////////////////////////////////////
     // creating title
     let title = document.createElement("span");
     title.className = "title";
@@ -103,11 +136,14 @@ async function createContent() {
     title_info.className = "title_info";
     let title_info_text = document.createTextNode("ذكر");
     title_info.appendChild(title_info_text);
-    landing_area.appendChild(title_container);
+    // landing_area.appendChild(title_container);
     title_container.appendChild(title);
     title_container.appendChild(title_info);
     azkar.appendChild(container);
     container.appendChild(title_container);
+    //////////////////////////////////////////////////////////////
+    // container.appendChild(title_container);
+    //////////////////////////////////////////////////////////
     let content_area = document.createElement("div");
     content_area.className = "content-area";
     azkar.appendChild(content_area);
@@ -134,7 +170,7 @@ async function createContent() {
       let count_down = document.createElement("span");
       count_down.setAttribute("class", "count-down");
       count_down.setAttribute("id", `${azkar_name}_count`);
-      count_down.innerHTML = `${azkar_data[i].count}`
+      count_down.innerHTML = `${azkar_data[i].count}`;
       counter.appendChild(count_down);
       //
       let zekr_reset = document.createElement("span");
@@ -219,31 +255,73 @@ async function createContent() {
     });
   });
 }
+/////////////////////////////////////////////
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to activate the section or home element
+  function activatingSection(activeSection) {
+    // Hide all sections and the home element
+    let siteSections = document.querySelectorAll(".landing-area .section");
+    let homeElement = document.querySelector(".home");
+    siteSections.forEach((section) => {
+      section.setAttribute("data-active", "none");
+      section.style.display = "none";
+    });
+    homeElement.setAttribute("data-active", "none");
+    homeElement.style.display = "none";
+
+    // Show the active section
+    let activeElement = document.getElementById(activeSection);
+    if (activeElement) {
+      activeElement.setAttribute("data-active", "active");
+      activeElement.style.display = "block";
+      activeElement.style.opacity = 1;
+    }
+  }
+
+  // Initial hiding of sections (home is visible by default)
+  let noneActiveSections = document.querySelectorAll(".landing-area .section");
+  noneActiveSections.forEach((el) => {
+    el.setAttribute("data-active", "none");
+    el.style.display = "none";
+  });
+
+  // Event listeners for links
+  let imageLinks = document.querySelectorAll(".home-azkar-links ul a");
+  imageLinks.forEach((a) => {
+    a.addEventListener("click", (clickedlink) => {
+      clickedlink.preventDefault(); // Prevent default anchor click behavior
+      let sectionId = clickedlink.currentTarget.getAttribute("href").slice(1);
+      activatingSection(sectionId);
+      document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" }); // Smooth scroll
+    });
+  });
+});
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function get_data_count() {
-          let count_downs = document.querySelectorAll(".count-down");
-          counter_data = []
-          window.localStorage.clear()
-          count_downs.forEach((span)=>{
-            counter_data.push({"count":`${span.innerHTML}`})
-            window.localStorage.setItem("count",`${JSON.stringify(counter_data)}`)
-          })
-            } 
-   function setDataCount() {
-      // check if there is data in localStorge
-      if (window.localStorage.length>0) {
-        let counter_data = JSON.parse(window.localStorage.getItem("count"))
-        let count_downs = document.querySelectorAll(".count-down") ;
-        count_downs.forEach((span, i)=>{
-            span.innerHTML = `${counter_data[i].count}`;
-            if (counter_data[i].count == 0) {
-              span.parentElement.style.backgroundColor = "#87ceeb"
-            }
-          })
+  let count_downs = document.querySelectorAll(".count-down");
+  counter_data = [];
+  window.localStorage.clear();
+  count_downs.forEach((span) => {
+    counter_data.push({ count: `${span.innerHTML}` });
+    window.localStorage.setItem("count", `${JSON.stringify(counter_data)}`);
+  });
+}
+function setDataCount() {
+  // check if there is data in localStorge
+  if (window.localStorage.length > 0) {
+    let counter_data = JSON.parse(window.localStorage.getItem("count"));
+    let count_downs = document.querySelectorAll(".count-down");
+    count_downs.forEach((span, i) => {
+      span.innerHTML = `${counter_data[i].count}`;
+      if (counter_data[i].count == 0) {
+        span.parentElement.style.backgroundColor = "#87ceeb";
       }
+    });
+  }
 }
 async function reset_finished_azkar_counter() {
   await createContent();
-   setDataCount();
+
   // Get all of the countdown elements
   const counters = document.querySelectorAll(".counter");
   const resets = document.querySelectorAll(".zekr-reset");
@@ -273,32 +351,37 @@ async function reset_finished_azkar_counter() {
   // Wait for the countDowns.forEach loop to finish before executing the if statement
   countDowns.forEach((count_downs) => {
     // Filter the countDowns array to only include the elements that have an innerHTML property that is not equal to "0"
-    const filteredCount = Array.from(count_downs).filter(
-      (count_down) => +count_down.textContent > 0 );
-      console.log(filteredCount)
+    const filteredCount = Array.from(count_downs).filter((count_down) => {
+      // console.log(count_down.innerHTML)
+      if (count_down.innerHTML != "0") {
+        return count_down.innerHTML;
+      }
+    });
     // If the filteredCount array is empty, then all of the countdowns have finished
-    if (filteredCount.length == 0) {
+    if (filteredCount.length === 0) {
       // Reset all of the countdown elements
       count_downs.forEach((count_down) => {
         count_down.textContent = count_down.previousElementSibling.textContent;
-        count_down.parentElement.style.backgroundColor = "#34affc"
       });
+
+      // Get the new data count
+      get_data_count();
     }
   });
-        // Get the new data count
-      get_data_count();
 }
 
 async function plus_minus() {
   await reset_finished_azkar_counter();
+  setDataCount();
   let counters = document.querySelectorAll(".counter");
   let resets = document.querySelectorAll(".zekr-reset");
   let count_downs = document.querySelectorAll(".count-down");
   resets.forEach((reset) => {
     reset.addEventListener("click", () => {
-      reset.previousElementSibling.textContent = reset.previousElementSibling.previousElementSibling.textContent;
-        get_data_count()
-        reset.parentElement.style.backgroundColor = "#34affc"
+      reset.previousElementSibling.textContent =
+        reset.previousElementSibling.previousElementSibling.textContent;
+      get_data_count();
+      reset.parentElement.style.backgroundColor = "#34affc";
     });
   });
   counters.forEach((counter, index) => {
@@ -307,7 +390,7 @@ async function plus_minus() {
         if (i === index) {
           if (count_down.innerHTML > 0) {
             count_down.innerHTML -= 1;
-             get_data_count()
+            get_data_count();
             if (count_down.innerHTML == 0) {
               counter.style.backgroundColor = "var(--minor-color)";
               counter.style.animationName = "color-animation-counter";
@@ -371,6 +454,7 @@ function addNightModeAttribute(element) {
 let switchButton = document.querySelector(".switch-button");
 switchButton.innerHTML = `<i class="fa-solid fa-moon"></i>`;
 switchButton.innerHTML = `<i class="fa-regular fa-sun"></i>`;
+////////////////////////////////////////////////////////////////////////////////
 function light_or_night_mode() {
   try {
     const body = document.querySelector("body");
@@ -380,16 +464,17 @@ function light_or_night_mode() {
     const rondomZekr = document.querySelector(".rondom-zekr");
     const date = document.querySelector(".date");
     const home = document.querySelector(".home");
-    const titles = document.querySelectorAll("span.title");
+    const titles = document.querySelectorAll("span");
+    const iconBack = document.querySelector(".icon-back");
     const azkar_sabah_statistic = document.querySelector(
       ".azkar-sabah-statistic"
-    );
+      );
     const azkar_masaa_statistic = document.querySelector(
       ".azkar-masaa-statistic"
-    );
-    const azkarSabahLink = document.querySelector(".azkar-sabah-link");
-    const azkarMasaaLink = document.querySelector(".azkar-masaa-link");
-    const azkarAfterAlsalahLink = document.querySelector(
+      );
+      const azkarSabahLink = document.querySelector(".azkar-sabah-link");
+      const azkarMasaaLink = document.querySelector(".azkar-masaa-link");
+      const azkarAfterAlsalahLink = document.querySelector(
       ".azkar-after-alsalah-link"
     );
     const azkarSleepingLink = document.querySelector(".azkar-sleeping-link");
@@ -407,7 +492,9 @@ function light_or_night_mode() {
       azkarAfterAlsalahLink,
       azkarSleepingLink,
       azkarTasabehLink,
+      iconBack,
     ];
+    console.log(nightModeElement)
     if (switchButton.classList[1] === "light-mode-icon") {
       switchButton.innerHTML = `<i class="fa-solid fa-moon"></i>`;
       contentBoxes.forEach((contentBox) => {
@@ -446,6 +533,7 @@ function light_or_night_mode() {
 switchButton.addEventListener("click", () => {
   light_or_night_mode();
 });
+/////////////////////////////////////////////////////////
 window.addEventListener("resize", () => {
   const contentTexts = document.querySelectorAll(".content-text");
   const counters = document.querySelectorAll(".counter");
@@ -454,7 +542,7 @@ window.addEventListener("resize", () => {
     counters.forEach((counter, index) => {
       contentTexts.forEach((content, i) => {
         if (i === index) {
-          counter.style.minHeight = `${content.clientHeight - 50}px`;
+          counter.style.minHeight = `${content.clientHeight}px`;
         }
       });
     });
@@ -464,3 +552,4 @@ window.addEventListener("resize", () => {
     });
   }
 });
+reset_finished_azkar_counter();
