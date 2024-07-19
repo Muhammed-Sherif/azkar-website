@@ -70,7 +70,13 @@ span.higry-date {
   width: 100%;
   align-items: center;
   margin: auto;
-  padding: 35px;
+  padding: 30px !important; 
+  /* flex-direction: row-reverse; */
+}
+.section .container {
+  padding: 0 30px !important;
+  flex-direction: row-reverse;
+  margin: 10px 0 !important;
 }
 .sum-of-azkar .text-container {
   flex-direction: column;
@@ -271,13 +277,13 @@ a {
   position: relative;
   top: 10px;
 }
-@media screen and (width <=626px) {
+@media screen and (width <=1326px) {
   .azkar-links-area {
     flex-wrap: wrap;
   }
 }
 /* ////////////////////////////////////////////////////////// */
-.landing-area span,
+.landing-area span.light-mode-icon,
 .landing-area div {
   font-size: 30px;
 }
@@ -434,8 +440,8 @@ footer span {
   margin-right: 20px;
 }
 span.title {
-  font-weight: 900;
-  font-size: 40px;
+  font-weight: 500;
+  font-size: 35px;
 }
 
 .light-mode-icon,
@@ -466,7 +472,7 @@ i.fa-regular.fa-sun {
 
 .landing-area {
   flex-direction: column;
-  margin: 30px auto;
+  margin: 10px auto;
 }
 .content-box .content {
   margin: 10px;
@@ -641,3 +647,44 @@ span.title {
 .night-mode-icon , footer , .contact-links ,.title-container , .content-box .counter .count-down , .countercontainer {
   display : flex ;
 }
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+#azkar_alsabah, #azkar_almasaa, #azkar_after_alsalah, #azkar_sleeping, #tasabeh {
+  padding-top: 0px;
+}
+.section {
+  display: none; /* Hide all sections by default */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.section[data-active="active"] {
+  display: block;
+  opacity: 1;
+}
+
+.home {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.home[data-active="none"] {
+  display: none;
+  opacity: 0;
+}
+.back-icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  .icon-back span{
+  cursor: pointer;
+  color: white;
+  font-size: 52px;
+  padding: 24px;
+}
+.icon-back span.light-mode {
+  color: black !important;
+}
+
+
