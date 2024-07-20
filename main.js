@@ -311,15 +311,39 @@ document.addEventListener("DOMContentLoaded", function () {
 function get_data_count() {
   let count_downs = document.querySelectorAll(".count-down");
   counter_data = [];
-  window.localStorage.clear();
+  window.localStorage.removeItem("azkarCount");
+  window.localStorage.removeItem("azkarSabahCount");
+  window.localStorage.removeItem("azkarMasaaCount");
+  window.localStorage.removeItem("count");
   window.localStorage.setItem("azkarCount", `${azkarCount}`);
   window.localStorage.setItem("azkarSabahCount", `${azkarSabahCount}`);
   window.localStorage.setItem("azkarMasaaCount", `${azkarMasaaCount}`);
+
   count_downs.forEach((span) => {
     counter_data.push({ count: `${span.innerHTML}` });
     window.localStorage.setItem("count", `${JSON.stringify(counter_data)}`);
   });
 }
+//
+function resetDataLastDay() {
+  let options = {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    numerals: "arabic",
+  }
+  // let date = `${new Intl.DateTimeFormat("ar-EG", options).format(date)}`
+  if (window.localStorage.getItem("day")) {
+      if (JSON.parse(window.localStorage.getItem("day")) !=`${new Intl.DateTimeFormat("ar-EG", options).format(date)}`) {
+        window.localStorage.clear();
+        // window.localStorage.setItem("day" , JSON.stringify(new Intl.DateTimeFormat("ar-EG", options).format(date)))
+      }
+  }
+  else {
+    window.localStorage.setItem("day" , JSON.stringify(new Intl.DateTimeFormat("ar-EG", options).format(date)))
+  }
+}
+//
 // check if there is data in localStorge
 if (window.localStorage.getItem("azkarCount")) {
   azkarCount = parseInt(window.localStorage.getItem("azkarCount"));
@@ -625,3 +649,4 @@ function calcNumberOfAzkarSabahAndMasaa() {
     azkar_almasaa_num += parseInt(el.count);
   });
 }
+resetDataLastDay();
