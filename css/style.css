@@ -107,18 +107,19 @@ span.higry-date {
   border-radius: 20px;
   margin: 0 30px;
   align-items: center;
-  width: 210px;
+  width: 230px;
   justify-content: space-between;
 }
 .azkar-sabah-statistic span.count,
-.azkar-masaa-statistic span.count {
+
+.azkar-sabah-statistic span.count, .azkar-masaa-statistic span.count {
   margin-right: 15px;
   padding: 5px;
   border: 3px solid !important;
-  width: 52px;
-  height: 52px;
+  width: 69px;
+  height: 69px;
   font-size: 17px;
-  border-radius: 26px;
+  border-radius: 33px;
   align-items: center;
   justify-content: center;
 }
@@ -585,6 +586,14 @@ span.title {
     padding-right: 7px;
   }
 }
+@media screen and (width<=500px) {
+  span.title {
+    font-size: 22px;
+}
+.section .container {
+  padding: 0px 0px !important;
+}
+}
 @media screen and (width<=390px) {
   .public-date {
     font-size: 23px;
@@ -686,5 +695,3 @@ span.title {
 .icon-back span.light-mode {
   color: black !important;
 }
-
-
