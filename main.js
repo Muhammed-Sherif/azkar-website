@@ -4,6 +4,8 @@ let tasabeh_data = [];
 let azkar_sleeping_data = [];
 let azkar_after_alsalah_data = [];
 let data_count = [];
+let azkar_alsabah_num;
+let azkar_almasaa_num;
 let azkar_title_names = [
   "أذكار الصباح",
   "أذكار المساء",
@@ -18,6 +20,10 @@ let azkar_names = [
   "azkar_sleeping",
   "tasabeh",
 ];
+// Initialize variables to store the count of azkar
+let azkarCount = 0;
+let azkarSabahCount = 0;
+let azkarMasaaCount = 0;
 let counter_data = [];
 let body = document.querySelector("body");
 async function fetchData() {
@@ -38,6 +44,7 @@ async function fetchData() {
 }
 async function createContent() {
   await fetchData();
+  // calc the total of azkar alsabah and all almasaa
   // adding date
   let public_date = document.querySelector(".public-date");
   let higry_date = document.querySelector(".higry-date");
@@ -57,7 +64,10 @@ async function createContent() {
     numerals: "arabic",
   };
   let hijriDate = new Date(date.setDate(date.getDate() - 1));
-  higry_date.innerHTML = `${new Intl.DateTimeFormat("ar-FR-u-ca-islamic", option).format(hijriDate)}`;  
+  higry_date.innerHTML = `${new Intl.DateTimeFormat(
+    "ar-FR-u-ca-islamic",
+    option
+  ).format(hijriDate)}`;
   //
   // get rondom zekr span
   let rondom_zekr = document.querySelector(".rondom-zekr span");
@@ -82,16 +92,17 @@ async function createContent() {
       hr.style.display = "none";
     }
   }
+  calcNumberOfAzkarSabahAndMasaa();
   // Function to go back to the home view
-  window.goBack = function() {
+  window.goBack = function () {
     let siteSections = document.querySelectorAll(".landing-area .section");
     let homeElement = document.querySelector(".home");
 
     // Hide all sections
     siteSections.forEach((section) => {
-        section.setAttribute("data-active", "none");
-        section.style.opacity = 0; // Added for fade-out effect
-        section.style.display = "none" ; // Added for fade-out effect
+      section.setAttribute("data-active", "none");
+      section.style.opacity = 0; // Added for fade-out effect
+      section.style.display = "none"; // Added for fade-out effect
     });
 
     // Show the home element
@@ -100,9 +111,9 @@ async function createContent() {
     homeElement.style.display = "block";
 
     // Smooth scroll to the top of the page
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   function create_zekr_page(azkar_name, azkar_title_name, azkar_data) {
     let azkar = document.createElement("div");
     azkar.setAttribute("id", `${azkar_name}`);
@@ -116,9 +127,9 @@ async function createContent() {
     ///////////////////////////////////////////////////////////////////////
     let iconBack = document.createElement("div");
     iconBack.className = "icon-back";
-    iconBack.addEventListener("click",()=>{
-      goBack()
-    })
+    iconBack.addEventListener("click", () => {
+      goBack();
+    });
     let span = document.createElement("span");
     span.className = "material-symbols-outlined";
     let spanText = document.createTextNode("redo");
@@ -301,14 +312,27 @@ function get_data_count() {
   let count_downs = document.querySelectorAll(".count-down");
   counter_data = [];
   window.localStorage.clear();
+  window.localStorage.setItem("azkarCount", `${azkarCount}`);
+  window.localStorage.setItem("azkarSabahCount", `${azkarSabahCount}`);
+  window.localStorage.setItem("azkarMasaaCount", `${azkarMasaaCount}`);
   count_downs.forEach((span) => {
     counter_data.push({ count: `${span.innerHTML}` });
     window.localStorage.setItem("count", `${JSON.stringify(counter_data)}`);
   });
 }
+// check if there is data in localStorge
+if (window.localStorage.getItem("azkarCount")) {
+  azkarCount = parseInt(window.localStorage.getItem("azkarCount"));
+}
+if (window.localStorage.getItem("azkarSabahCount")) {
+  azkarSabahCount = parseInt(window.localStorage.getItem("azkarSabahCount"));
+}
+if (window.localStorage.getItem("azkarMasaaCount")) {
+  azkarMasaaCount = parseInt(window.localStorage.getItem("azkarMasaaCount"));
+}
 function setDataCount() {
   // check if there is data in localStorge
-  if (window.localStorage.length > 0) {
+  if (window.localStorage.getItem("count")) {
     let counter_data = JSON.parse(window.localStorage.getItem("count"));
     let count_downs = document.querySelectorAll(".count-down");
     count_downs.forEach((span, i) => {
@@ -321,7 +345,6 @@ function setDataCount() {
 }
 async function reset_finished_azkar_counter() {
   await createContent();
-
   // Get all of the countdown elements
   const counters = document.querySelectorAll(".counter");
   const resets = document.querySelectorAll(".zekr-reset");
@@ -352,7 +375,6 @@ async function reset_finished_azkar_counter() {
   countDowns.forEach((count_downs) => {
     // Filter the countDowns array to only include the elements that have an innerHTML property that is not equal to "0"
     const filteredCount = Array.from(count_downs).filter((count_down) => {
-      // console.log(count_down.innerHTML)
       if (count_down.innerHTML != "0") {
         return count_down.innerHTML;
       }
@@ -369,9 +391,29 @@ async function reset_finished_azkar_counter() {
     }
   });
 }
-
+// Function to increase azkar count
+function increaseAzkar(type) {
+  azkarCount++;
+  if (type === "sabah") {
+    azkarSabahCount++;
+  } else if (type === "masaa") {
+    azkarMasaaCount++;
+  }
+  updateStatistics();
+}
+// // Example usage (assuming buttons or links to trigger these functions exist in your HTML)
+function gettingClickedAzkar(clickedElement) {
+  if (clickedElement.id === "azkar_alsabah_count") {
+    increaseAzkar("sabah");
+  } else if (clickedElement.id === "azkar_almasaa_count") {
+    increaseAzkar("masaa");
+  } else {
+    increaseAzkar("");
+  }
+}
 async function plus_minus() {
   await reset_finished_azkar_counter();
+  updateStatistics();
   setDataCount();
   let counters = document.querySelectorAll(".counter");
   let resets = document.querySelectorAll(".zekr-reset");
@@ -390,6 +432,7 @@ async function plus_minus() {
         if (i === index) {
           if (count_down.innerHTML > 0) {
             count_down.innerHTML -= 1;
+            gettingClickedAzkar(count_down);
             get_data_count();
             if (count_down.innerHTML == 0) {
               counter.style.backgroundColor = "var(--minor-color)";
@@ -422,10 +465,10 @@ footer.appendChild(span);
 let contact_links = document.createElement("div");
 contact_links.className = "contact-links";
 contact_links.innerHTML = `
-          <i class="fa-brands fa-facebook"></i> 
-          <i class="fa-brands fa-twitter"></i>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-brands fa-github "></i>
+<i class="fa-brands fa-facebook"></i> 
+<i class="fa-brands fa-twitter"></i>
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-github "></i>
           `;
 footer.appendChild(contact_links);
 let icons = document.querySelectorAll(".contact-links i");
@@ -468,13 +511,13 @@ function light_or_night_mode() {
     const iconBack = document.querySelector(".icon-back");
     const azkar_sabah_statistic = document.querySelector(
       ".azkar-sabah-statistic"
-      );
+    );
     const azkar_masaa_statistic = document.querySelector(
       ".azkar-masaa-statistic"
-      );
-      const azkarSabahLink = document.querySelector(".azkar-sabah-link");
-      const azkarMasaaLink = document.querySelector(".azkar-masaa-link");
-      const azkarAfterAlsalahLink = document.querySelector(
+    );
+    const azkarSabahLink = document.querySelector(".azkar-sabah-link");
+    const azkarMasaaLink = document.querySelector(".azkar-masaa-link");
+    const azkarAfterAlsalahLink = document.querySelector(
       ".azkar-after-alsalah-link"
     );
     const azkarSleepingLink = document.querySelector(".azkar-sleeping-link");
@@ -494,7 +537,6 @@ function light_or_night_mode() {
       azkarTasabehLink,
       iconBack,
     ];
-    console.log(nightModeElement)
     if (switchButton.classList[1] === "light-mode-icon") {
       switchButton.innerHTML = `<i class="fa-solid fa-moon"></i>`;
       contentBoxes.forEach((contentBox) => {
@@ -553,3 +595,33 @@ window.addEventListener("resize", () => {
   }
 });
 reset_finished_azkar_counter();
+
+// Function to update statistics
+function updateStatistics() {
+  const totalAzkarElement = document.querySelector(".num-of-azkar");
+  const sabahCountElement = document.querySelector(
+    ".azkar-sabah-statistic .count"
+  );
+  const masaaCountElement = document.querySelector(
+    ".azkar-masaa-statistic .count"
+  );
+  totalAzkarElement.textContent = azkarCount;
+  sabahCountElement.textContent = `%${(
+    (azkarSabahCount / azkar_alsabah_num) *
+    100
+  ).toFixed(1)}`;
+  masaaCountElement.textContent = `%${(
+    (azkarMasaaCount / azkar_almasaa_num) *
+    100
+  ).toFixed(1)}`;
+}
+function calcNumberOfAzkarSabahAndMasaa() {
+  azkar_alsabah_num = 0;
+  azkar_almasaa_num = 0;
+  azkar_sabah_data.forEach((el) => {
+    azkar_alsabah_num += parseInt(el.count);
+  });
+  azkar_masaa_data.forEach((el) => {
+    azkar_almasaa_num += parseInt(el.count);
+  });
+}
