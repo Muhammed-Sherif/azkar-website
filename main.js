@@ -63,7 +63,7 @@ async function createContent() {
     year: "numeric",
     numerals: "arabic",
   };
-  let hijriDate = new Date(date.setDate(date.getDate() - 1));
+  let hijriDate = new Date(date.setDate(date.getDate());
   higry_date.innerHTML = `${new Intl.DateTimeFormat(
     "ar-FR-u-ca-islamic",
     option
