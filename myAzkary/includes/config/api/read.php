@@ -1,6 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Content-Type:appliction/json");
 header("Access-Control-Allow-Headers: Content-Type, Authorization"); //////////
 include "../conn/conn.php";
 include "../../config/model/azkar.php";
