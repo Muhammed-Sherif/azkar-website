@@ -7,7 +7,6 @@ include "../../config/model/azkar.php";
 $conn = (new db())->connect() ;
 $azkar = new azkar($conn) ;
 if (isset($_GET["categoryId"])) {
-    echo "true" ;
     if ($_GET["categoryId"] == 1) {
         $azkar->id =$_GET["categoryId"] ;
         $stmt = $azkar->singleRead();
